@@ -1,0 +1,66 @@
+<audio id="myMusic" loop>
+    <source src="music.mp3/Warm-Memories-Emotional-Inspiring-Piano(chosic.com).mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicButton" onclick="toggleMusic()">🔊</button>
+
+<script>
+    const music = document.getElementById("myMusic");
+    const musicButton = document.getElementById("musicButton");
+
+    // محاولة تشغيل الأغنية تلقائياً
+    music.play().then(() => {
+        musicButton.textContent = "🔊";
+    }).catch(() => {
+        // المتصفح منع التشغيل التلقائي
+        musicButton.textContent = "🔇";
+
+        // أول ضغطة في الصفحة تشغل الأغنية
+        document.addEventListener("click", function startMusic() {
+            music.play();
+            musicButton.textContent = "🔊";
+
+            document.removeEventListener("click", startMusic);
+        }, { once: true });
+    });
+
+    // تشغيل / إيقاف الأغنية
+    function toggleMusic() {
+        if (music.paused) {
+            music.play();
+            musicButton.textContent = "🔊";
+        } else {
+            music.pause();
+            musicButton.textContent = "🔇";
+        }
+    }
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jo</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="social-links">
+ <a href="https://www.facebook.com/yousefmohameahme/?locale=ar_AR" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i>
+<img src="images/facebook.png.png" alt="Facebook">
+</a>
+<a href="https://www.instagram.com/yousef.mohaamed/" target="_blank" aria-label="Instagram">  <i class="fa-brands fa-instagram"></i>
+<img src="images/instagram.png" alt="Instagram">
+</a>
+<a href="https://www.tiktok.com/@yousseff_m" target="_blank" arua-label="Tiktok"> <i class="fa-brands fa-tiktok"></i>  
+<img src="images/tiktok.png" alt="Tiktok"
+</a>
+<a href="https://www.youtube.com/channel/UCKC3bW-8gr2rdO0Sv6ogFEg" target="_blank" aria-label="Youtube">  <i class="fa-brands fa-youtube"></i>
+<img src="images/youtube.png" alt="Youtube">
+</a>
+<a href="https://mail.google.com/mail/u/1/#inbox" target="_blank" aria-label="Gmail">  <i class="fa-solid fa-envelope"></i>
+<img src="images/gmail.png" alt="Gmail">
+</a>
+    </div>
+</body>
+</html>
